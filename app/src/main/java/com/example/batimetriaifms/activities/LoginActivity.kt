@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.widget.NestedScrollView
+import kotlinx.android.synthetic.main.activity_login.*
 import com.example.batimetriaifms.R
 import com.example.batimetriaifms.helpers.InputValidation
 import com.example.batimetriaifms.sql.DatabaseHelper
@@ -100,7 +101,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             R.id.appCompatButtonLogin -> verifyFromSQLite()
             R.id.textViewLinkRegister -> {
                 // Navigate to RegisterActivity
-                val intentRegister = Intent(this, RegisterActivity::class.java)
+                val intentRegister = Intent(applicationContext, RegisterActivity::class.java)
                 startActivity(intentRegister)
             }
         }
@@ -111,33 +112,33 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
      */
     private fun verifyFromSQLite() {
 
-        if (!inputValidation!!.isInputEditTextFilled(textInputEditTextEmail!!, textInputLayoutEmail!!, getString(
-                R.string.error_message_email))) {
-            return
-        }
-        if (!inputValidation!!.isInputEditTextEmail(textInputEditTextEmail!!, textInputLayoutEmail!!, getString(
-                R.string.error_message_email))) {
-            return
-        }
-        if (!inputValidation!!.isInputEditTextFilled(textInputEditTextPassword!!, textInputLayoutPassword!!, getString(
-                R.string.error_message_email))) {
-            return
-        }
+//        if (!inputValidation!!.isInputEditTextFilled(textInputEditTextEmail!!, textInputLayoutEmail!!, getString(
+//                R.string.error_message_email))) {
+//            return
+//        }
+//        if (!inputValidation!!.isInputEditTextEmail(textInputEditTextEmail!!, textInputLayoutEmail!!, getString(
+//                R.string.error_message_email))) {
+//            return
+//        }
+//        if (!inputValidation!!.isInputEditTextFilled(textInputEditTextPassword!!, textInputLayoutPassword!!, getString(
+//                R.string.error_message_email))) {
+//            return
+//        }
 
-        if (databaseHelper!!.checkUser(textInputEditTextEmail!!.text.toString().trim { it <= ' ' }, textInputEditTextPassword!!.text.toString().trim { it <= ' ' })) {
+//        if (databaseHelper!!.checkUser(textInputEditTextEmail!!.text.toString().trim { it <= ' ' }, textInputEditTextPassword!!.text.toString().trim { it <= ' ' })) {
 
 
-            val accountsIntent = Intent(activity, MainActivity::class.java)
+            val accountsIntent = Intent(this, MainActivity::class.java)
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail!!.text.toString().trim { it <= ' ' })
             emptyInputEditText()
             startActivity(accountsIntent)
 
 
-        } else {
-
-            // Snack Bar to show success message that record is wrong
-            Snackbar.make(nestedScrollView!!, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show()
-        }
+//        } else {
+//
+//            // Snack Bar to show success message that record is wrong
+//            Snackbar.make(nestedScrollView!!, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show()
+//        }
     }
 
     /**

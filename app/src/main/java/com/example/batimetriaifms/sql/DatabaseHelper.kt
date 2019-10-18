@@ -17,12 +17,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     private val CREATE_USER_TABLE = ("CREATE TABLE " + TABLE_USER + "("
             + COLUMN_USER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_USER_NAME + " TEXT,"
             + COLUMN_USER_EMAIL + " TEXT," + COLUMN_USER_PASSWORD + " TEXT" + ")")
+    private val seedBancoUser =("INSERT INTO TABLE_USER(COLUMN_USER_ID, COLUMN_USER_NAME, COLUMN_USER_EMAIL,COLUMN_USER_PASSWORD)" +
+            "VALUES('1', Usuario, 'usuario@ifms.com.br','ifms' );")
 
     // drop table sql query
     private val DROP_USER_TABLE = "DROP TABLE IF EXISTS $TABLE_USER"
 
     override fun onCreate(db: SQLiteDatabase) {
         db.execSQL(CREATE_USER_TABLE)
+        db.execSQL(seedBancoUser)
     }
 
 
