@@ -30,4 +30,6 @@
     <string name="action_settings">Configurações</string>
     <string name="text_hello">Olá, </string>
     <string name="text_title">BatimetriaIFMS</string>
+    <string name="facebook_application_id" translatable="false">417976455543784</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb417976455543784</string>
 </resources>
